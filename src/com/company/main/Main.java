@@ -31,9 +31,11 @@ public class Main {
                 case "F":
                     farm();
                     break;
+                case "Q":
+                    break;
                 default:
                     System.out.println("Didn't catch that, can you try one more time.");
-
+                    break;
             }
 
         }

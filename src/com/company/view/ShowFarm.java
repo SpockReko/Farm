@@ -42,7 +42,7 @@ public class ShowFarm {
         while (!command.equals("Q")) {
 
             action();
-            command = scanner.next();
+            command = scanner.next().toUpperCase();
 
             switch (command) {
                 case "A":
@@ -69,7 +69,8 @@ public class ShowFarm {
                 case "R":
                     removeAnimal();
                     break;
-
+                default:
+                    System.out.println("Didn't catch that, try one more time.");
             }
         }
 
@@ -259,8 +260,7 @@ public class ShowFarm {
             name = scanner.next();
 
         } else {
-            done = false;
-
+            done = true;
         }
         return done;
     }

@@ -3,4 +3,5 @@ sheep fiona 2 2.0 2.0 blue
 
 cow fia 2 3.0 3.0
 dog fido 3 4.4 grr
+cow dennis 20 20.0 20.0
 
