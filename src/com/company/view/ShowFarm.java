@@ -3,8 +3,6 @@ package com.company.view;
 import com.company.control.AnimalController;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,10 +14,11 @@ import java.util.Scanner;
 public class ShowFarm {
 
     private AnimalController animalControl = new AnimalController();
-    private String command = "";
     private Scanner scanner = new Scanner(System.in);
     private List<String> animalTypes = new LinkedList<>();
 
+    private String command = "";
+    private String result = "";
     private String name;
     private int age;
     private double weight;
@@ -76,6 +75,10 @@ public class ShowFarm {
 
     }
 
+    /**
+     * Saves the data you have given to next time!
+     */
+
     public void save(){
         try{
             FileWriter fw = new FileWriter("save.txt");
@@ -91,6 +94,9 @@ public class ShowFarm {
 
     }
 
+    /**
+     *  Load from file that you previously saved.
+     */
     public void load(){
 
         try {
@@ -132,13 +138,18 @@ public class ShowFarm {
 
     }
 
-
+    /**
+     * Remove a animal by giving the animals name.
+     */
     private void removeAnimal() {
         System.out.println(animalControl.listAllName());
         System.out.print("\nWho do you want to remove > ");
         System.out.println(animalControl.remove(scanner.next()));
     }
 
+    /**
+     *  Give some helping text about the commands.
+     */
     private void help() {
         System.out.println("\nYou can do following things: ");
         System.out.print("\nStore a Animal (A)\nRemove a Animal (R)\nGet a View over your farm (V)\n" +
@@ -155,6 +166,9 @@ public class ShowFarm {
         System.out.println("HI and welcome to your farm\n");
     }
 
+    /**
+     * the first steps in the program
+     */
     private void firstStep() {
         if (animalControl.overviewOfAnimals().equals("")) {
             System.out.println("Right now your farm is empty\n");
@@ -166,6 +180,9 @@ public class ShowFarm {
         }
     }
 
+    /**
+     * Add data to your register
+     */
     private void storeProcedure() {
         System.out.println("Start store animals by writing" + printAnimal() +"\n");
         System.out.print("What do you want to store: ");
@@ -181,32 +198,76 @@ public class ShowFarm {
         }
     }
 
+    /**
+     *  Saves information about a dog
+     */
     private void storeDog() {
         storeAnimal();
         System.out.print("\nAnd the label of food: ");
         String label = scanner.next();
-        String Result = animalControl.StoreDog(name, age, weight, label);
-        System.out.print("\n" + Result);
+        boolean done = false;
+        while (!done) {
+        result = animalControl.StoreDog(name, age, weight, label);
+            done = isDone(done);
+        }
+        System.out.print("\n" + result);
     }
 
+
+    /**
+     *  Saves information about a sheep
+     */
     private void storeSheep() {
         storeAnimal();
         System.out.print("\nAmount of wool(kg): ");
         double kgOfWool = scanner.nextDouble();
         System.out.print("\nAnd the colour of wool: ");
         String color = scanner.next();
-        String Result = animalControl.StoreSheep(name, age, weight, kgOfWool, color);
-        System.out.print("\n" + Result);
+        boolean done = false;
+        while (!done) {
+            result = animalControl.StoreSheep(name, age, weight, kgOfWool, color);
+            done = isDone(done);
+        }
+        System.out.print("\n" + result);
     }
 
+
+    /**
+     *  Saves information about a cow
+     */
     private void storeCow() {
         storeAnimal();
         System.out.print("\nAmount of milk(liters): ");
         double literOfMilk = scanner.nextDouble();
-        String Result = animalControl.StoreCow(name, age, weight, literOfMilk);
-        System.out.print("\n" + Result);
+        boolean done = false;
+        while (!done) {
+            result = animalControl.StoreCow(name, age, weight, literOfMilk);
+            done = isDone(done);
+        }
+        System.out.print("\n" + result);
     }
 
+    /**
+     * No animal with the same name can be saved
+     * @param done
+     * @return
+     */
+    private boolean isDone(boolean done) {
+        if (result.equals("Error name")) {
+            System.out.println("The name already exist\n\nShows a new name\n\n");
+            System.out.print("\nName: ");
+            name = scanner.next();
+
+        } else {
+            done = false;
+
+        }
+        return done;
+    }
+
+    /**
+     * The information all animals need before it get stored
+     */
     private void storeAnimal() {
         System.out.print("\nYou choose to add a " + command.toLowerCase());
         System.out.print("\nName: ");
@@ -220,6 +281,11 @@ public class ShowFarm {
             weight = (double) scanner.nextInt();
     }
 
+    /**
+     * One method that writes the kind of animal you can store at the moment.
+     *
+     * @return
+     */
     private String printAnimal(){
         String result = "";
         for(int i = 0; i< animalTypes.size(); i++){

@@ -9,28 +9,34 @@ import java.util.Scanner;
  */
 public class Main {
 
+    private static String command = "";
+    private static Scanner s = new Scanner(System.in);
+
     public static void main(String[] args) {
         start();
     }
 
     private static void start() {
-        System.out.print("Palindrome (P) \nFarm (F) \nQuit (Q)\n\ncommand>");
-        String command = "";
 
-        while(command.equals("Q"));
 
-        Scanner s = new Scanner(System.in);
-        command = s.next();
-        switch (command){
-            case "P":
-                palindrome();
-                break;
-            case "F":
-                farm();
-                break;
+        while(!command.equals("Q")) {
+
+            System.out.print("\nAction menu: \n\nPalindrome (P) \nFarm (F) \nQuit (Q)\n\ncommand>");
+
+            command = s.next().toUpperCase();
+            switch (command) {
+                case "P":
+                    palindrome();
+                    break;
+                case "F":
+                    farm();
+                    break;
+                default:
+                    System.out.println("Didn't catch that, can you try one more time.");
+
+            }
+
         }
-
-
     }
 
     private static void farm() {
@@ -42,8 +48,7 @@ public class Main {
 
     private static void palindrome() {
         Palindrome p = new Palindrome();
-        Scanner s = new Scanner(System.in);
-        System.out.print("Write a word > ");
+        System.out.print("\nWrite a word > ");
         String text = s.next();
 
         if(p.wordIsPalindrome(text))

@@ -1,9 +1,7 @@
 package com.company.control;
 
 
-import com.company.model.Animal;
 import com.company.model.Farm;
-import sun.security.jca.GetInstance;
 
 /**
  * Created by Admin on 2017-03-08.
@@ -27,8 +25,6 @@ public class AnimalController {
         return farm.addDog(name, age, weight, label);
     }
 
-    // Different choices: overviewOfAnimals, showAllCows, showAllSheep, showAllDogs, oldestAnimal
-    // Different actions: Store Animal
     public String overviewOfAnimals(){
         return farm.overview();
     }

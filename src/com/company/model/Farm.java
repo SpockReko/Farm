@@ -29,6 +29,10 @@ public class Farm {
         return addAnimal(name, dog);
     }
 
+    /**
+     * Formats and send back the overview of the stored animals.
+     * @return
+     */
     public String overview() {
 
         Cow cow = new Cow(null,0,0,0);
@@ -54,6 +58,10 @@ public class Farm {
 
     }
 
+    /**
+     * Next three methods sends back the information about all cows, sheep or dogs.
+     * @return
+     */
     public String showCow() {
         String result = "\n";
         for (Animal a: animalList){
@@ -81,6 +89,10 @@ public class Farm {
         return result;
     }
 
+    /**
+     * Sends back the information about the oldest animal
+     * @return
+     */
     public String showOldest() {
         int highestAge = 0;
         Animal oldestAnimal = animalList.get(0);
@@ -94,16 +106,27 @@ public class Farm {
 
     }
 
+    /**
+     * Checks if there is an animal with the same name before it adds the information.
+     * @param name
+     * @param givenAnimal
+     * @return
+     */
     private String addAnimal(String name, Animal givenAnimal) {
         for (Animal indexAnimal: animalList) {
             if(indexAnimal.getName().equals(givenAnimal.getName())){
-                return "Sorry: There already an animal named " + name;
+                return "Error name";
             }
         }
         animalList.add(givenAnimal);
         return "Now is " + name + "added to your farm";
     }
 
+    /**
+     * Removes the animal with the given name.
+     * @param name
+     * @return
+     */
     public boolean remove(String name) {
         for (Animal indexAnimal: animalList) {
             if(indexAnimal.getName().equals(name))
@@ -112,6 +135,10 @@ public class Farm {
         return false;
     }
 
+    /**
+     * sends back a list with all the names in the register
+     * @return
+     */
     public String listAllName() {
         String result = "Name : Type\n\n";
         for (Animal indexAnimal: animalList) {
@@ -120,6 +147,10 @@ public class Farm {
         return result;
     }
 
+    /**
+     * Sends back animal info to get saved in a text file to next time you start the program.
+     * @return
+     */
     public String showAllAnimal() {
         String result = "";
         for (Animal a: animalList) {
