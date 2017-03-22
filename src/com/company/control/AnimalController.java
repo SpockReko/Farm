@@ -1,44 +1,32 @@
 package com.company.control;
 
 
+import com.company.model.AnimalData;
+import com.company.model.AnimalType;
 import com.company.model.Farm;
+import com.company.model.IFarm;
 
 /**
  * Created by Admin on 2017-03-08.
  *
  * This class is a controller for the model. Connects the view to the model.
  */
-public class AnimalController {
+public class AnimalController implements IAnimalController {
 
-    public Farm farm = new Farm();
+    public IFarm farm = new Farm();
 
-
-    public String StoreCow(String name, int age, double weight, double literOfMilk) {
-        return farm.addCow(name, age, weight, literOfMilk);
-    }
-
-    public String StoreSheep(String name, int age, double weight, double kgOfWool, String color) {
-        return farm.addSheep(name, age, weight, kgOfWool, color);
-    }
-
-    public String StoreDog(String name, int age, double weight, String label) {
-        return farm.addDog(name, age, weight, label);
+    @Override
+    public String addAnimal(AnimalData animalData, AnimalType type) {
+        return null;
     }
 
     public String overviewOfAnimals(){
         return farm.overview();
     }
 
-    public String showAllCows(){
-        return farm.showCow();
-    }
-
-    public String showAllSheep(){
-        return farm.showSheep();
-    }
-
-    public String showAllDogs(){
-        return farm.showDogs();
+    @Override
+    public String showAnimal(AnimalType type) {
+        return null;
     }
 
     public String oldestAnimal(){

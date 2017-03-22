@@ -16,4 +16,6 @@ public interface Animal {
     public String getType();
 
     public String getName();
+
+    public String addAnimal(AnimalData animalData, AnimalType type);
 }

@@ -1,6 +1,8 @@
 package com.company.view;
 
 import com.company.control.AnimalController;
+import com.company.control.IAnimalController;
+import com.company.model.AnimalType;
 
 import java.io.*;
 import java.util.LinkedList;
@@ -13,7 +15,7 @@ import java.util.Scanner;
  */
 public class ShowFarm {
 
-    private AnimalController animalControl = new AnimalController();
+    private IAnimalController animalControl = new AnimalController();
     private Scanner scanner = new Scanner(System.in);
     private List<String> animalTypes = new LinkedList<>();
 
@@ -52,13 +54,13 @@ public class ShowFarm {
                     System.out.println(animalControl.overviewOfAnimals());
                     break;
                 case "C":
-                    System.out.println(animalControl.showAllCows());
+                    System.out.println(animalControl.showAnimal(AnimalType.COW));
                     break;
                 case "S":
-                    System.out.println(animalControl.showAllSheep());
+                    System.out.println(animalControl.showAnimal(AnimalType.SHEEP));
                     break;
                 case "D":
-                    System.out.println(animalControl.showAllDogs());
+                    System.out.println(animalControl.showAnimal(AnimalType.DOG));
                     break;
                 case "O":
                     System.out.println(animalControl.oldestAnimal());

@@ -9,24 +9,15 @@ import java.util.List;
  *
  * The Farm Class holds the animals and get information and calculates the age
  */
-public class Farm {
+public class Farm implements IFarm {
 
     public List<Animal> animalList = new LinkedList<>();
 
+    private Animal animal;
 
-    public String addCow(String name, int age, double weight, double literOfMilk) {
-        Animal cow = new Cow(name, age, weight, literOfMilk);
-        return addAnimal(name, cow);
-    }
-
-    public String addSheep(String name, int age, double weight, double kgOfWool, String color) {
-        Animal sheep = new Sheep(name, age, weight, kgOfWool, color);
-        return addAnimal(name, sheep);
-    }
-
-    public String addDog(String name, int age, double weight, String label) {
-        Animal dog = new Dog(name, age, weight, label);
-        return addAnimal(name, dog);
+    @Override
+    public String addAnimal(AnimalData animalData, AnimalType type) {
+        return animal.addAnimal(animalData, type);
     }
 
     /**
@@ -58,36 +49,15 @@ public class Farm {
 
     }
 
+    @Override
+    public String showAnimal(AnimalType type) {
+        return "showAnimal in farm is not implemented";
+    }
+
     /**
      * Next three methods sends back the information about all cows, sheep or dogs.
      * @return
      */
-    public String showCow() {
-        String result = "\n";
-        for (Animal a: animalList){
-            if(a.getType().equals("cow"))
-                result = result + "\n" + a.toString();
-        }
-        return result;
-    }
-
-    public String showSheep() {
-        String result = "\n";
-        for (Animal a: animalList){
-            if(a.getType().equals("sheep"))
-                result = result + "\n" + a.toString();
-        }
-        return result;
-    }
-
-    public String showDogs() {
-        String result = "\n";
-        for (Animal a: animalList){
-            if(a.getType().equals("dog"))
-                result = result +  a.toString();
-        }
-        return result;
-    }
 
     /**
      * Sends back the information about the oldest animal
@@ -106,21 +76,6 @@ public class Farm {
 
     }
 
-    /**
-     * Checks if there is an animal with the same name before it adds the information.
-     * @param name
-     * @param givenAnimal
-     * @return
-     */
-    private String addAnimal(String name, Animal givenAnimal) {
-        for (Animal indexAnimal: animalList) {
-            if(indexAnimal.getName().equals(givenAnimal.getName())){
-                return "Error name";
-            }
-        }
-        animalList.add(givenAnimal);
-        return "Now is " + name + "added to your farm";
-    }
 
     /**
      * Removes the animal with the given name.
@@ -139,6 +94,7 @@ public class Farm {
      * sends back a list with all the names in the register
      * @return
      */
+    @Override
     public String listAllName() {
         String result = "Name : Type\n\n";
         for (Animal indexAnimal: animalList) {
@@ -151,6 +107,7 @@ public class Farm {
      * Sends back animal info to get saved in a text file to next time you start the program.
      * @return
      */
+    @Override
     public String showAllAnimal() {
         String result = "";
         for (Animal a: animalList) {

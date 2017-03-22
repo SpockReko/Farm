@@ -8,19 +8,12 @@ package com.company.model;
 
 public class Cow implements Animal {
 
-    private final String type;
-
-    private final String name;
-    private final int age;
-    private final double weight;
+    private String type;
+    private String name;
+    private int age;
+    private double weight;
     private double literOfMilk;
-    public Cow(String name, int age, double weight, double literOfMilk) {
-        this.type = "cow";
-        this.name = name;
-        this.age = age;
-        this.weight = weight;
-        this.literOfMilk = literOfMilk;
-    }
+
 
     @Override
     public String toString() {
@@ -52,5 +45,17 @@ public class Cow implements Animal {
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String addAnimal(AnimalData animalData, AnimalType type) {
+        if(type == AnimalType.COW){
+            this.type = "cow";
+            this.name = name;
+            this.age = age;
+            this.weight = weight;
+            this.literOfMilk = literOfMilk;
+        }
+        return name + " is added";
     }
 }
