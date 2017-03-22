@@ -8,6 +8,11 @@ import java.util.List;
  * Created by Admin on 2017-03-08.
  *
  * The Farm Class holds the animals and get information and calculates the age
+ *
+ * Förbättringar:
+ * TODO: Gör interface som skapar uppdeling från animalControler
+ * TODO: Gör overview lite mindre och snyggare.
+ *
  */
 public class Farm {
 

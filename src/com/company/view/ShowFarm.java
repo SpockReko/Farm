@@ -8,6 +8,13 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
+ * *************
+ * Förbättringar:
+ * TODO: factorisera parametrarna i load metoderna som exempel storeCow
+ * TODO: Factorisera system.out.print metoderna till en annan klass
+ * TODO: Kanske sköta inläsningen i en annan klass för att få en kod som är enklare att ändra.
+ * ******************
+ *
  * Created by Admin on 2017-03-08.
  * This class is responsible to handle the input and output to the user
  */
@@ -97,6 +104,8 @@ public class ShowFarm {
 
     /**
      *  Load from file that you previously saved.
+     *
+     *  TODO: Förbättringar: refakturera inputen i storeCow(*), storeSheep(*) osv.
      */
     public void load(){
 
@@ -107,26 +116,26 @@ public class ShowFarm {
 
             String str;
             while((str = br.readLine()) != null) {
-                String[] splitStr = str.split(" ");
+                String[] splitString = str.split(" ");
 
-                if(splitStr[0].equals("cow"))
-                        animalControl.StoreCow(splitStr[1],
-                            Integer.parseInt(splitStr[2]),
-                            Double.parseDouble(splitStr[3]),
-                            Double.parseDouble(splitStr[4]));
+                if(splitString[0].equals("cow"))
+                        animalControl.StoreCow(splitString[1],
+                            Integer.parseInt(splitString[2]),
+                            Double.parseDouble(splitString[3]),
+                            Double.parseDouble(splitString[4]));
 
-                if(splitStr[0].equals("sheep"))
-                        animalControl.StoreSheep(splitStr[1],
-                            Integer.parseInt(splitStr[2]),
-                            Double.parseDouble(splitStr[3]),
-                            Double.parseDouble(splitStr[4]),
-                            splitStr[5]);
+                if(splitString[0].equals("sheep"))
+                        animalControl.StoreSheep(splitString[1],
+                            Integer.parseInt(splitString[2]),
+                            Double.parseDouble(splitString[3]),
+                            Double.parseDouble(splitString[4]),
+                            splitString[5]);
 
-                if(splitStr[0].equals("dog"))
-                        animalControl.StoreDog(splitStr[1],
-                            Integer.parseInt(splitStr[2]),
-                            Double.parseDouble(splitStr[3]),
-                            splitStr[4]);
+                if(splitString[0].equals("dog"))
+                        animalControl.StoreDog(splitString[1],
+                            Integer.parseInt(splitString[2]),
+                            Double.parseDouble(splitString[3]),
+                            splitString[4]);
             }
 
             br.close();
@@ -258,7 +267,6 @@ public class ShowFarm {
             System.out.println("The name already exist\n\nShows a new name\n\n");
             System.out.print("\nName: ");
             name = scanner.next();
-
         } else {
             done = true;
         }

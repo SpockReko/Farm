@@ -4,6 +4,10 @@ package com.company.model;
  * Created by Admin on 2017-03-08.
  *
  * This model the information for a cow
+ *
+ * Förbättningar:
+ * TODO: Göra en abstraktion av värden name, age, weight för mindre dubblecering i varje klass. Möjligtvis en superklass.
+ * TODO: Möjligtvis att göra type till en enum för bättre kontroll.
  */
 
 public class Cow implements Animal {
@@ -14,6 +18,7 @@ public class Cow implements Animal {
     private final int age;
     private final double weight;
     private double literOfMilk;
+
     public Cow(String name, int age, double weight, double literOfMilk) {
         this.type = "cow";
         this.name = name;

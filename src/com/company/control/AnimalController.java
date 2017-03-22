@@ -7,6 +7,9 @@ import com.company.model.Farm;
  * Created by Admin on 2017-03-08.
  *
  * This class is a controller for the model. Connects the view to the model.
+ *
+ * Förbättringar:
+ * TODO: Gör ett interface som delar av viewn med controllern.
  */
 public class AnimalController {
 
